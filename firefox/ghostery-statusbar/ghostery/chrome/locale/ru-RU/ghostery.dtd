@@ -1,0 +1,49 @@
+<!ENTITY ghostery.title                 "Ghostery">
+<!ENTITY ghostery.version               "2.0.1">
+<!ENTITY ghostery.url                   "http://www.ghostery.com/">
+<!-- Statusbar menu -->
+<!ENTITY ghostery.help                  "Справка">
+<!ENTITY ghostery.settings              "Настройки...">
+<!ENTITY ghostery.feedback              "Обратная связь">
+<!ENTITY ghostery.share                 "Поделиться Ghostery с друзьями">
+<!ENTITY ghostery.about                 "О Ghostery">
+<!-- About dialog -->
+<!ENTITY ghostery.win.title             "О расширении Ghostery">
+<!ENTITY ghostery.support.label         "Поддержка">
+<!ENTITY ghostery.email.label           "support@ghostery.com">
+<!ENTITY ghostery.homepage.label        "Сайт">
+<!ENTITY ghostery.close.label           "Закрыть">
+<!ENTITY ghostery.version.label         "Версия">
+<!-- Settings dialog -->
+<!ENTITY ghostery.settings.tab.options  "варианты">
+<!ENTITY ghostery.settings.tab.blocking "блокирующий">
+<!ENTITY ghostery.settings.showalert    "Показывать пузырёк-предупреждение">
+<!ENTITY ghostery.settings.alertlabel   "Настройки предупреждений">
+<!ENTITY ghostery.settings.dismiss      "Убирать предупреждение после">
+<!ENTITY ghostery.settings.bugcount     "Включить счётчик (показывает кол-во найденных жучков)">
+<!ENTITY ghostery.settings.statusbar    "Настройки строки состояния">
+<!ENTITY ghostery.settings.advanced     "Расширенные настройки">
+<!ENTITY ghostery.settings.careful      "ПОЖАЛУЙСТА, ПРОЧТИТЕ ЭТО ВНИМАТЕЛЬНО">
+<!ENTITY ghostery.settings.desc         "Используя возможность GhostRank вы можете отправлять анонимную статистическую информацию о жучках, находящихся на сайтах, которые вы посещаете, в Ghostery.">
+<!ENTITY ghostery.settings.desc2        "Эта информация используется для сбора сведений о веб-жучках в Интернете. Она не содержит никаких персональных данных и используется только для оценки популярности и распространнености жучков.">
+<!ENTITY ghostery.settings.bugrank      "Включить GhostRank">
+<!-- Blocking options -->
+<!ENTITY ghostery.settings.blocking.caption "Настройки блокировки">
+<!ENTITY ghostery.settings.blocking.description "Включить блокировку
+веб-жучков">
+<!ENTITY ghostery.settings.blocking.on "Включено">
+<!ENTITY ghostery.settings.blocking.off "Выключено">
+<!ENTITY ghostery.settings.blocking.none "Ничего">
+<!ENTITY ghostery.settings.blocking.all "Всё">
+<!ENTITY ghostery.settings.blocking.customized "Изменён">
+<!ENTITY ghostery.settings.blocking.block "Блокировать?">
+<!ENTITY ghostery.settings.blocking.name "Имя">
+<!ENTITY ghostery.settings.blocking.select "Выбрать:">
+<!ENTITY ghostery.settings.blocking.filter "Фильтр:">
+<!-- Help -->
+<!ENTITY ghostery.settings.help.content "Если у вас есть какие-то вопросы,
+напишите нам:">
+<!ENTITY ghostery.settings.help.email   "E-mail:">
+<!ENTITY ghostery.settings.help.homepage    "Сайт:">
+<!ENTITY ghostery.settings.help.forum   "Форум поддержки:">
+<!ENTITY ghostery.settings.help.twitter "Twitter:">

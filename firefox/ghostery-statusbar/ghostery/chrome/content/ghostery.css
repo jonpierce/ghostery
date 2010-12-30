@@ -1,0 +1,130 @@
+statusbarpanel#ghostery-status {
+    list-style-image: url("chrome://ghostery/content/ghostery-off-16x16.png");
+}
+statusbarpanel#ghostery-status[status="none"] {
+    list-style-image: url("chrome://ghostery/content/ghostery-off-16x16.png");
+}
+statusbarpanel#ghostery-status[status="found"] {
+    list-style-image: url("chrome://ghostery/content/ghostery-16x16.png");
+}
+#ghostery-status {
+    text-decoration:underline;
+    color:blue;
+    margin-left:0px;
+    margin-right:0px !important;
+    padding-right:0px !important;
+    /*-moz-appearance: none; */
+}
+#ghostery-status[disabled="true"] {
+    display:none;
+}
+#ghostery-status:hover, .menu-bug-whatis:hover {
+    cursor:pointer;
+}
+.menu-bug-whatis {
+    color:blue;
+    text-decoration:underline;
+}
+.menu-bug-whatis:hover {
+    color:white;
+}
+.menu-bug-item {
+    font-weight:bold;
+    margin:1px 0px 1px 0px;
+}
+.menu-bug-item:hover {
+    color:white;
+}
+.menu-bug-header {
+    -moz-appearance:none !important;
+    background-color:#330033 !important;
+    color:#EEE;
+    font-weight:bold;
+    margin:0px 0px 2px 0px;
+    padding:2px;
+}
+.menu-header:hover {
+    -moz-appearance:none !important;
+    color:#EEE;
+}
+.menu-header {
+    -moz-appearance:none !important;
+    padding:5px 2px 3px 2px !important;
+    margin-bottom:2px !important;
+    font-weight:bold;
+    font-size:14px;
+    background-color:#330033;
+    color:#EEE;
+    margin:0px;
+}
+.popup-internal-box#ghostery-popup {
+/*  -moz-appearance: none !important;
+    color: -moz-FieldText !important;*/
+    padding: 0px 0px 4px 0px !important;
+}
+.webbug-popup {
+    padding: 4px 0px 4px 0px !important;
+}
+.script-url-item {
+    max-width: 300px;
+}
+.ghostery-options-content {background-color: #FFFFFF;}
+.ghostery-options-label {font-weight: bold;}
+
+/* https://developer.mozilla.org/en/XUL_Tutorial/Styling_a_Tree */
+#bugTree > treechildren {
+  background-color: #fff;
+}
+#bugTree > treechildren.disabled {
+  background-color: #eee;
+}
+#bugTree > treechildren::-moz-tree-row {
+  border: none;
+}
+#bugTree > treechildren::-moz-tree-row(disabled) {
+  background-color: #eee;
+}
+#bugTree > treechildren::-moz-tree-cell-text(disabled) {
+  color: #555;
+}
+/* cbox-check(-dis).gif isn't available in Firefox 2 and 3 in Mac OS X, so we bundle it */
+#bugTree > treechildren::-moz-tree-checkbox(checked) {
+  list-style-image: url("chrome://ghostery/content/cbox-check.gif");
+}
+#bugTree > treechildren::-moz-tree-checkbox(disabled) {
+  list-style-image: none;
+}
+#bugTree > treechildren::-moz-tree-checkbox(disabled,checked) {
+  list-style-image: url("chrome://ghostery/content/cbox-check-dis.gif");
+}
+#blockingMode {
+  margin: 5px;
+}
+#blockingMode radio {
+  margin-right: 5px;
+}
+menu.blocked-bug {
+  color: #aaa;
+  font-style: italic;
+}
+menu.blocked-bug:hover {
+  color: #fff;
+}
+#bugSelectionToggles {
+  margin: 5px 5px 5px 5px;
+}
+#bugSelectionToggles description {
+  padding-top: 1px;
+}
+#bugSelectionToggles a {
+  margin-right: 5px;
+  text-decoration: underline;
+}
+#bugSelectionToggles.disabled {
+  color: #555;
+  text-decoration: none;
+}
+#bugSelectionToggles.disabled a {
+  text-decoration: none;
+  cursor: default;
+}

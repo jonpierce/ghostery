@@ -1,0 +1,9 @@
+# Firefox
+overlay	chrome://browser/content/browser.xul chrome://ghostery/content/ghostery.xul
+
+content ghostery chrome/content/
+
+locale 	ghostery en-US chrome/locale/en-US/
+locale 	ghostery de-DE chrome/locale/de-DE/
+locale 	ghostery es-ES chrome/locale/es-ES/
+locale 	ghostery ru-RU chrome/locale/ru-RU/

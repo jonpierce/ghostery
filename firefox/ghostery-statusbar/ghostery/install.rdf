@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>firefox@ghostery.com</em:id>
+    <em:name>Ghostery</em:name>
+    <em:version>2.0.1</em:version>
+    <em:type>2</em:type>
+    <em:updateKey>MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDDR1V9gzTF+Rvpx7FJXYofZdSmEtUPuCNdOGeIoIsaMu/yeHR08pR8FDl1j4e+vuhJmkKKZJc8QpV2sW5FLBXKOnqr9OcvKqprxrgdNd198yGXpD2i4Nbf76sOe8xYZQZaRXEXhrTeIph6KjoEg4wX4hLouR/yNPUXb/bWlzHcGwIDAQAB</em:updateKey>
+    <em:updateURL>http://www.ghostery.com/firefox/releases/update.rdf?os=%APP_OS%&amp;app_id=%APP_ID%&amp;app_version=%APP_VERSION%&amp;item_id=%ITEM_ID%&amp;item_version=%ITEM_VERSION%</em:updateURL>
+
+    <!-- Front End Metadata -->
+    <em:creator>David Cancel</em:creator>
+    <em:developer>Jon Pierce</em:developer>
+    <em:description>Ghostery identifies and allows you to block the 3rd parties (web bugs) that are hidden on the current page you're visiting. Web bugs include ad networks, behavioral data collectors and web analytics providers.</em:description>
+    <em:homepageURL>http://www.ghostery.com/</em:homepageURL>
+    <em:aboutURL>chrome://ghostery/content/about.xul</em:aboutURL>
+    <em:optionsURL>chrome://ghostery/content/options.xul</em:optionsURL>
+    <em:iconURL>chrome://ghostery/content/ghostery.png</em:iconURL>
+    
+    <!-- Localization -->
+    <em:localized>
+      <Description>
+        <em:locale>de-DE</em:locale>
+        <em:name>Ghostery</em:name>
+        <em:description>Benachrichtigt Sie über die unsichtbare Web-Elemente, die in der aktuellen Seite. Einschließlich der web bugs, JavaScript Bibliotheken, usw.</em:description>
+      </Description>
+    </em:localized>
+    <em:localized>
+      <Description>
+        <em:locale>es-ES</em:locale>
+        <em:name>Ghostery</em:name>
+        <em:description>Te informa de los elementos web invisibles que haya en la página en la que estés, incluyendo errores, liberías javascript, espías, etc.</em:description>
+      </Description>
+    </em:localized>
+    <em:localized>
+      <Description>
+        <em:locale>ru-RU</em:locale>
+        <em:name>Ghostery</em:name>
+        <em:description>
+        Ghostery выявляет и позволяет блокировать 3 сторон (веб ошибок), которые скрыты от текущей страницы вы посещаете. Веб ошибок включать рекламные сети, поведенческие данные сборщиков и поставщиков веб-аналитики.</em:description>
+      </Description>
+    </em:localized>
+    <!-- Supported Browser Versions -->
+    
+    <!-- Firefox -->
+    <em:targetApplication>
+      <Description>
+        <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
+        <em:minVersion>3.0</em:minVersion>
+        <em:maxVersion>3.5.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+    
+    <!-- Flock -->
+    <em:targetApplication>
+         <Description>
+                <em:id>{a463f10c-3994-11da-9945-000d60ca027b}</em:id>
+                <em:minVersion>0.7</em:minVersion>
+                <em:maxVersion>1.0.*</em:maxVersion>
+        </Description>
+    </em:targetApplication>
+
+  </Description>
+</RDF>

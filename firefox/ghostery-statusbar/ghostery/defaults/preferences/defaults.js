@@ -1,0 +1,10 @@
+pref("extensions.ghostery.enabled", true);
+pref("extensions.ghostery.showBubble", true);
+pref("extensions.ghostery.autoDismissBubble", true);
+pref("extensions.ghostery.bubbleTimeout", 15);
+pref("extensions.ghostery.showBugCount", true);
+pref("extensions.ghostery.shareData", false);
+pref("extensions.ghostery.debug", false);
+pref("extensions.ghostery.censusURL", 'http://www.ghostery.com/api/census');
+pref("extensions.ghostery.blockingMode", -1);
+pref("extensions.ghostery.selectedBugsUpdated", "");

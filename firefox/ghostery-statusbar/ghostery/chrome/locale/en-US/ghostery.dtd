@@ -1,0 +1,47 @@
+<!ENTITY ghostery.title                 "Ghostery">
+<!ENTITY ghostery.version               "2.0.1">
+<!ENTITY ghostery.url                   "http://www.ghostery.com/">
+<!-- Statusbar menu -->
+<!ENTITY ghostery.help                  "Help">
+<!ENTITY ghostery.settings              "Options...">
+<!ENTITY ghostery.feedback              "Give us Feedback">
+<!ENTITY ghostery.share                 "Share Ghostery with friends">
+<!ENTITY ghostery.about                 "About Ghostery">
+<!-- About dialog -->
+<!ENTITY ghostery.win.title             "About Ghostery Browser Add-on">
+<!ENTITY ghostery.support.label         "Support">
+<!ENTITY ghostery.email.label           "support@ghostery.com">
+<!ENTITY ghostery.homepage.label        "Home Page">
+<!ENTITY ghostery.close.label           "Close">
+<!ENTITY ghostery.version.label         "Version">
+<!-- Settings dialog -->
+<!ENTITY ghostery.settings.tab.options  "Options">
+<!ENTITY ghostery.settings.tab.blocking "Blocking">
+<!ENTITY ghostery.settings.showalert    "Show Alert Bubble">
+<!ENTITY ghostery.settings.alertlabel   "Alert Options">
+<!ENTITY ghostery.settings.dismiss      "Dismiss Alert Bubble after">
+<!ENTITY ghostery.settings.bugcount     "Enable ghost count (shows a count of the trackers found)">
+<!ENTITY ghostery.settings.statusbar    "Statusbar Options">
+<!ENTITY ghostery.settings.advanced     "Advanced Options">
+<!ENTITY ghostery.settings.careful      "PLEASE READ THIS CAREFULLY">
+<!ENTITY ghostery.settings.desc         "By using the GhostRank feature of Ghostery, you may be sending anonymous statistics information about the web bugs found on the sites you visit to Ghostery.">
+<!ENTITY ghostery.settings.desc2        "This information is used to create a census of web bugs across the internet. It does not contain any Personally Identifiable Information and is used only in aggregate to help our users understand the popularity and spread of web bugs.">
+<!ENTITY ghostery.settings.bugrank      "Enable GhostRank">
+<!-- Blocking options -->
+<!ENTITY ghostery.settings.blocking.caption "Blocking Options">
+<!ENTITY ghostery.settings.blocking.description "Enable web bug blocking">
+<!ENTITY ghostery.settings.blocking.on "On">
+<!ENTITY ghostery.settings.blocking.off "Off">
+<!ENTITY ghostery.settings.blocking.none "None">
+<!ENTITY ghostery.settings.blocking.all "All">
+<!ENTITY ghostery.settings.blocking.customized "Customized">
+<!ENTITY ghostery.settings.blocking.block "Block?">
+<!ENTITY ghostery.settings.blocking.name "Name">
+<!ENTITY ghostery.settings.blocking.select "Select:">
+<!ENTITY ghostery.settings.blocking.filter "Filter:">
+<!-- Help -->
+<!ENTITY ghostery.settings.help.content "If you have any questions, please feel free to contact us:">
+<!ENTITY ghostery.settings.help.email   "E-mail:">
+<!ENTITY ghostery.settings.help.homepage    "Website:">
+<!ENTITY ghostery.settings.help.forum   "Support Forum:">
+<!ENTITY ghostery.settings.help.twitter "Twitter:">

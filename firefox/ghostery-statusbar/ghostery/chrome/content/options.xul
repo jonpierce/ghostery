@@ -1,0 +1,289 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://ghostery/content/ghostery.css" type="text/css"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<!DOCTYPE overlay SYSTEM "chrome://ghostery/locale/ghostery.dtd">
+<dialog xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    buttons="accept,cancel"
+    buttonlabelcancel="Cancel" 
+    buttonlabelaccept="Save"
+    onload="onload();"
+    ondialogaccept="onsave();"
+    ondialogcancel="oncancel();"
+    title="Ghostery Options">
+<!-- 
+  Ghostery Firefox Extension: http://www.ghostery.com/
+
+  Copyright (C) 2008-2009 David Cancel
+
+  @author David Cancel
+  @author Jon Pierce
+  @copyright Copyright (C) 2008-2009 David Cancel <dcancel@dcancel.com>
+-->
+    <script type="application/x-javascript" src="chrome://ghostery/content/ghostery-common.js"/>
+    <script type="application/x-javascript" src="chrome://ghostery/content/ghostery-db.js"/>
+    <script type="application/x-javascript" src="chrome://ghostery/content/json.js"/>
+    <stringbundleset id="stringbundleset">
+        <stringbundle id="ghostery-strings" src="chrome://ghostery/locale/ghostery.properties" />
+    </stringbundleset>
+    
+    <tabbox>
+      <tabs>
+        <tab label="&ghostery.settings.tab.options;"/>
+        <tab label="&ghostery.settings.tab.blocking;"/>
+      </tabs>
+      <tabpanels>
+        <tabpanel>
+          <vbox>
+          <groupbox>
+              <caption label="&ghostery.settings.alertlabel;"/>
+              <hbox flex="1" align="center">
+                  <checkbox id="showBubble" label="&ghostery.settings.showalert;" checked="true"/>
+              </hbox>
+              <hbox flex="1" align="center">
+                  <checkbox id="autoDismissBubble" label="&ghostery.settings.dismiss;" checked="true"/>
+                  <textbox id="bubbleTimeout" min="1" max="99" size="2" type="number" value="15" width="40"/>
+                  <label value="seconds"/>
+              </hbox>
+          </groupbox>
+          <groupbox>
+              <caption label="&ghostery.settings.statusbar;"/>
+              <vbox flex="1" align="left">
+                  <checkbox id="showBugCount" label="&ghostery.settings.bugcount;" checked="true"/>
+              </vbox>
+          </groupbox>
+          <groupbox>
+              <caption label="&ghostery.settings.advanced;"/>
+              <vbox flex="1" align="left" maxwidth="400" style="margin-bottom:15px;">
+                  <description style="color:red;font-weight:bold;margin-bottom:5px;margin-top:5px;"> 
+                      &ghostery.settings.careful;
+                  </description>
+                  <spacer flex="1" style="margin-top:5px;"/>
+                  <description>
+                      &ghostery.settings.desc;
+                  </description>
+                  <spacer flex="1" style="margin-top:5px;"/>
+                  <description>
+                      &ghostery.settings.desc2;
+                  </description>
+                  <spacer flex="1" style="margin-top:5px;"/>
+                  <checkbox id="shareData" label="&ghostery.settings.bugrank;" checked="false"/>
+              </vbox>
+          </groupbox>
+          </vbox>
+        </tabpanel>
+        <tabpanel>
+          <groupbox flex="1">
+            <!-- <caption label="&ghostery.settings.blocking.caption;"/> -->
+            <description>&ghostery.settings.blocking.description;</description>
+            <hbox id="bugSelectionToggles">
+              <hbox flex="1" pack="start" align="center">
+                <radiogroup id="blockingMode" orient="horizontal" onclick="updateTreeView()">
+                    <radio id="blockingModeCustomized" label="&ghostery.settings.blocking.on;" value="0"/>
+                    <radio label="&ghostery.settings.blocking.off;" value="-1"/>
+                </radiogroup>
+              </hbox>
+              <hbox flex="1" pack="end" align="center">
+                <label value="&ghostery.settings.blocking.select;"/>
+                <!-- for some reason, the html doesn't render outside of the description tag in FF 2 -->
+                <description>
+                  <html:a id="bugSelectionToggleAll" href="#" onclick="selectAllBugs(this, true); return false;">&ghostery.settings.blocking.all;</html:a>
+                  <html:a id="bugSelectionToggleNone" href="#" onclick="selectAllBugs(this, false); return false;">&ghostery.settings.blocking.none;</html:a>
+                </description>
+              </hbox>
+            </hbox>
+            <tree id="bugTree" editable="true" hidecolumnpicker="true" flex="1" height="200">
+              <treecols>
+                <treecol id="bugTreeColBlock" type="checkbox" label="&ghostery.settings.blocking.block;" editable="true"/>
+                <treecol label="&ghostery.settings.blocking.name;" flex="1" editable="false"/>
+              </treecols>
+              <treechildren id="bugTreeChildren" />
+            </tree>
+            <hbox pack="start" align="center">
+              <label control="bugTreeFilter" value="&ghostery.settings.blocking.filter;" />
+              <textbox id="bugTreeFilter" oninput="treeView.filterRows(this.value)" value=""/>
+            </hbox>
+          </groupbox>
+        </tabpanel>
+      </tabpanels>
+    </tabbox>
+    <script type="text/javascript">
+      <![CDATA[            
+      // https://developer.mozilla.org/en/XUL_Tutorial/Custom_Tree_Views
+      var treeView =
+      {
+        tree: null,
+        disabled: false,
+        rows: [],
+        rowCount : 0,
+        allRows: [],
+        setTree: function(tree) { if (!this.tree) { this.tree = tree; updateTreeView(); } },
+        isSorted: function() { return false; },
+        isContainer: function(row) { return false; },
+        isSeparator: function(row) { return false; },
+        getLevel: function(row) { return 0; },
+        getImageSrc: function(row, col) { return null; },
+        cycleHeader: function(col, elem) {},
+        getColumnProperties: function(colid, col, props) {},
+        getRowProperties: function(row, props)
+        {
+          if (this.disabled)
+          {
+            var aserv = Components.classes["@mozilla.org/atom-service;1"].getService(Components.interfaces.nsIAtomService);
+            props.AppendElement(aserv.getAtom("disabled"));
+          }
+        },        
+        getCellProperties: function(row, col, props)
+        {
+          if (this.disabled)
+          {
+            var aserv = Components.classes["@mozilla.org/atom-service;1"].getService(Components.interfaces.nsIAtomService);
+            props.AppendElement(aserv.getAtom("disabled"));
+          }
+        },
+        getCellValue: function(row, col)
+        {
+          if (col.id == "bugTreeColBlock")
+            return this.rows[row].block ? "true" : "false";
+          else
+            return this.rows[row].name
+        },
+        setCellValue: function(row, col, value)
+        {
+          if (col.id == "bugTreeColBlock")
+          {
+            this.rows[row].block = (value == "true" ? true : false);
+            this.tree.invalidateRow(row);
+          }
+        },
+        getCellText : function(row, col) { return this.getCellValue(row, col); },
+        isEditable: function(row, col)
+        {
+          return (!this.disabled && col.id == "bugTreeColBlock") ? true : false;
+        },
+        addRow: function(row)
+        {
+          this.rows.push(row);
+          this.rowCount += 1;
+          this.allRows.push(row);
+        },
+        filterRows: function(text)
+        {
+          var oldRowCount = this.rowCount;
+          if (text) { text = text.replace(/^\s+|\s+$/g,""); } // trim
+          if (text && text.length > 0)
+          {
+            text = text.toLowerCase();
+            var filteredRows = [];
+            for (var i = 0; i < this.allRows.length; i++)
+            {
+              row = this.allRows[i];
+              rowName = row.name.toLowerCase();
+              if (rowName.indexOf(text) != -1) { filteredRows.push(row); }
+            }
+            this.rows = filteredRows;
+            this.rowCount = filteredRows.length;
+          }
+          else
+          {
+            this.rows = this.allRows;
+            this.rowCount = this.allRows.length;
+          }
+          var rowChange = this.rowCount - oldRowCount;
+          this.tree.rowCountChanged(oldRowCount, rowChange);
+          this.tree.invalidate();
+        }
+      };
+      
+      function updateTreeView()
+      {
+        bugSelectionToggles = document.getElementById("bugSelectionToggles");
+        bugSelectionToggleAll = document.getElementById("bugSelectionToggleAll");
+        bugSelectionToggleNone = document.getElementById("bugSelectionToggleNone");
+        bugTreeChildren = document.getElementById("bugTreeChildren");
+        bugTreeFilter = document.getElementById("bugTreeFilter");
+        
+        blockingMode = document.getElementById("blockingMode");
+        blockingMode.value = blockingMode.selectedItem ? blockingMode.selectedItem.value : "";
+        
+        blockingModeCustomized = document.getElementById("blockingModeCustomized");        
+        treeView.disabled = (blockingMode.selectedItem.value != blockingModeCustomized.value);
+                
+        if (treeView.disabled)
+        {
+          bugSelectionToggleAll.disabled = bugSelectionToggleNone.disabled = bugTreeFilter.disabled = true;
+          bugSelectionToggles.className = bugTreeChildren.className = "disabled";
+        }
+        else
+        {
+          bugSelectionToggleAll.disabled = bugSelectionToggleNone.disabled = bugTreeFilter.disabled = false;
+          bugSelectionToggles.className = bugTreeChildren.className = "";
+        }
+        
+        treeView.tree.invalidate();  
+      }
+
+      function selectAllBugs(link, all)
+      {
+        if (!link.disabled)
+        {
+          for (var i = 0; i < treeView.rows.length; i++)
+            treeView.rows[i].block = all ? true : false;
+          treeView.tree.invalidate();
+        }
+      }
+          
+      function getSelectedBugs()
+      {
+        var selectedBugs = []
+        for (var i = 0; i < treeView.allRows.length; i++)
+        {
+          var row = treeView.allRows[i];
+          if (row.block)
+            selectedBugs.push(row.id.toString());
+        }
+        return selectedBugs;
+      }
+      
+      function onload()
+      {
+        ghostery.prefs.startup();
+        ghostery.prefs.load();
+        blockingMode = document.getElementById("blockingMode");
+        var i = 0;
+        while (true)
+        {
+          try
+          {
+            var radio = blockingMode.getItemAtIndex(i)
+            if (radio.value == blockingMode.value)
+              blockingMode.selectedItem = radio;
+          }
+          catch (e) { break; }
+          i++;
+        }
+        for (var i = 0; i < ghostery.db.bugs.length; i++)
+        {
+          var bug = ghostery.db.bugs[i];
+          var block = ghostery.prefs.isSelectedBug(bug.id);
+          treeView.addRow({id: bug.id, name: bug.name, block: block});
+        }
+        document.getElementById("bugTree").view = treeView;
+      }
+      
+      function onsave()
+      {
+        var selectedBugs = getSelectedBugs();
+        var bugTree = document.getElementById("bugTree");
+        bugTree.selectedBugs = selectedBugs;
+        ghostery.prefs.save();
+        ghostery.prefs.shutdown();
+      }
+      
+      function oncancel()
+      {
+        ghostery.prefs.shutdown();
+      }
+      ]]>
+    </script>
+</dialog>

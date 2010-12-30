@@ -1,0 +1,47 @@
+<!ENTITY ghostery.title                 "Ghostery">
+<!ENTITY ghostery.version               "2.0.1">
+<!ENTITY ghostery.url                   "http://www.ghostery.com/">
+<!-- Statusbar menu -->
+<!ENTITY ghostery.help                  "Hilfe">
+<!ENTITY ghostery.settings              "Einstellungen...">
+<!ENTITY ghostery.feedback              "Feedback senden">
+<!ENTITY ghostery.share                 "Ghostery empfehlen">
+<!ENTITY ghostery.about                 "&#220;ber">
+<!-- About dialog -->
+<!ENTITY ghostery.win.title             "&#220;ber Ghostery">
+<!ENTITY ghostery.support.label         "Support">
+<!ENTITY ghostery.email.label           "support@ghostery.com">
+<!ENTITY ghostery.homepage.label        "Home Page">
+<!ENTITY ghostery.close.label           "Schlie&#223;en">
+<!ENTITY ghostery.version.label         "Version">
+<!-- Settings dialog -->
+<!ENTITY ghostery.settings.tab.options  "Optionen">
+<!ENTITY ghostery.settings.tab.blocking "Blocking">
+<!ENTITY ghostery.settings.showalert    "Zeige Hinweis-Blase">
+<!ENTITY ghostery.settings.alertlabel   "Hinweisoptionen">
+<!ENTITY ghostery.settings.dismiss      "Hinweis-Blase ausblenden nach">
+<!ENTITY ghostery.settings.bugcount     "Geisterz&#228;hler aktivieren (zeigt die Anzahl der gefundenen Tracker)">
+<!ENTITY ghostery.settings.statusbar    "Statusleistenoptionen">
+<!ENTITY ghostery.settings.advanced     "Erweiterte Optionen">
+<!ENTITY ghostery.settings.careful      "BITTE AUFMERKSAM LESEN">
+<!ENTITY ghostery.settings.desc         "Durch die Verwendung von GhostRank werden möglicherweise anonyme statistische Daten über Webbugs auf den von Ihnen besuchten Seiten an Ghostery gesendet.">
+<!ENTITY ghostery.settings.desc2        "Diese Daten werden verwendet um eine Übersicht über die im Internet gefundenen Webbugs zu erstellen. Es werden keine persönlich identifizierbaren Informationen übermittelt und die Daten werden nur verwendet um unseren Nutzern zu zeigen, wie weit verbreitet und populär Webbugs sind.">
+<!ENTITY ghostery.settings.bugrank      "GhostRank verwenden">
+<!-- Blocking options -->
+<!ENTITY ghostery.settings.blocking.caption "Blocking Optionen">
+<!ENTITY ghostery.settings.blocking.description "Aktivieren Sie Web-Bug-Sperrung">
+<!ENTITY ghostery.settings.blocking.on "An">
+<!ENTITY ghostery.settings.blocking.off "Aus">
+<!ENTITY ghostery.settings.blocking.none "Keine">
+<!ENTITY ghostery.settings.blocking.all "Alle">
+<!ENTITY ghostery.settings.blocking.customized "Personifizierte">
+<!ENTITY ghostery.settings.blocking.block "Block?">
+<!ENTITY ghostery.settings.blocking.name "Name">
+<!ENTITY ghostery.settings.blocking.select "Wählen Sie:">
+<!ENTITY ghostery.settings.blocking.filter "Filter:">
+<!-- Help -->
+<!ENTITY ghostery.settings.help.content "Wenn Sie Fragen haben, wenden Sie sich bitte an uns:">
+<!ENTITY ghostery.settings.help.email   "E-mail:">
+<!ENTITY ghostery.settings.help.homepage    "Webseite:">
+<!ENTITY ghostery.settings.help.forum   "Gemeinschafts-Foren:">
+<!ENTITY ghostery.settings.help.twitter "Twitter:">
